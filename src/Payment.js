@@ -8,6 +8,7 @@ import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./reducer";
 import axios from "./axios";
 import { db } from "./firebase";
+import Header from "./Header";
 
 export const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -101,6 +102,8 @@ export const Payment = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="payment">
       <div className="payment__container">
         <h1>Checkout {<Link to="/checkout">{basket?.length} items</Link>}</h1>
@@ -165,6 +168,7 @@ export const Payment = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
