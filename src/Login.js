@@ -14,7 +14,7 @@ const Login = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
-        navigate("/");
+        navigate("/amazon-clone");
       })
       .catch((error) => alert(error.message));
   };
@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <Link to="/">
+      <Link to="/amazon-clone">
         <img
           className="login__logo"
           src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"

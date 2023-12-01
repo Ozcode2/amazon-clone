@@ -15,7 +15,7 @@ function Header() {
   };
   return (
     <nav className="header">
-      <Link to="/">
+      <Link to="/amazon-clone">
         <img
           className="header__logo"
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
@@ -50,7 +50,7 @@ function Header() {
           </div>
         </Link>
 
-        <Link to="/" className="header__link">
+        <Link to="/amazon-clone" className="header__link">
           <div className="header__option">
             <span className="header__optionLineOne">Your</span>
             <span className="header__optionLineTwo">Prime</span>

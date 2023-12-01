@@ -55,7 +55,7 @@ function MainContent() {
 
   // Check if the current location is either Home or Checkout
   const showHeader =
-    location.pathname === "/" ||
+    location.pathname === "/amazon-clone" ||
     location.pathname === "/checkout" ||
     location.pathname === "/payment" ||
     location.pathname === "/orders";
