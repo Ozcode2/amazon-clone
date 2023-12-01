@@ -1,0 +1,37 @@
+.checkout{
+    display: flex;
+    padding: 20px;
+    background-color: white;
+    height: max-content;
+}
+
+.checkout__title{
+   margin-right: 10px;
+   padding: 10px;
+   border-bottom: 1px solid lightgray;
+   font-size: 20px;
+}
+
+div h3 {
+    font-size: 15px;
+}
+
+.checkout__ad{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+@media(max-width: 740px){
+    .checkout{
+        flex-wrap: wrap;
+    }
+
+    .checkout > .checkout__left > div > h3{
+        font-size: 12px;
+    }
+
+    .checkout__title{
+        font-size: 14px;
+        font-weight: 600;
+    }
+}

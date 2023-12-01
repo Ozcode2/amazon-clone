@@ -1,0 +1,134 @@
+.adressFormContainer > .addressform__header > h1{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.adressFormContainer > .addressform__header > h1 a{
+    text-decoration: none;
+}
+
+.adressFormContainer{
+   margin-bottom: 50px;
+   width: 100%;
+}
+
+.addressForm {
+    background-color: white;
+    margin-top: 50px;
+    border: 1px solid #dddada;
+    padding-top: 80px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    position: relative;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.addressform__input{
+   outline: 1px solid rgb(126, 124, 124);
+   margin-bottom: 15px;
+   border-radius: 3px;
+}
+
+.addressform__label{
+   position: relative;
+   font-weight: 800;
+   font-family: Arial, Helvetica, sans-serif;
+   display: block;
+   bottom: -5px;
+   font-size: 13px;
+}
+
+.header__logo {
+    width: 100px;
+    object-fit: contain;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 18px;
+}
+
+.addressform__header{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0px;
+    background: linear-gradient(to bottom, #ffffff, #f7f4f4);
+    width: 90%;
+    left: 4%;
+    padding: 20px;
+    gap: 330px;
+}
+
+.addressform__info{
+    gap: 20px;
+}
+
+.addressform__title{
+    position: absolute;
+    top: 10px;
+    font-size: 25px;
+}
+
+#addressform__special{
+    background-color: #F0F2F2;
+}
+
+.addressform__number{
+    position: relative;
+    bottom: 10px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.addressform__checkbox{
+    margin-top: 20px;
+}
+
+@media(min-width: 575px) and (max-width: 800px) {
+    .addressform__header{
+        left: 3%;
+    }
+
+    .adressFormContainer >.addressform__header >h1 {
+        position: absolute;
+        font-size: 20px;
+        left: 40%;
+    }
+}
+@media(min-width: 576px) and (max-width: 800px) {
+    .addressform__header{
+        left: 3%;
+    }
+
+    .adressFormContainer >.addressform__header >h1 {
+        position: absolute;
+        font-size: 20px;
+        left: 40%;
+    }
+}
+
+@media(min-width: 175px) and (max-width: 575px) {
+    .addressform__header{
+        left: 5%;
+    }
+
+    .adressFormContainer >.addressform__header >h1 {
+        position: absolute;
+        font-size: 17px;
+        left: 40%;
+    }
+
+    .header__logo {
+        width: 70px;
+        object-fit: contain;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 18px;
+    }
+
+    .addressForm{
+        left: 4%;
+    }
+}
