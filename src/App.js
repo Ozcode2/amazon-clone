@@ -76,7 +76,7 @@ function MainContent() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/amazon-clone" element={<Home />} />
       </Routes>
     </>
   );
