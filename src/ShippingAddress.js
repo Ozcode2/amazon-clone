@@ -4,6 +4,7 @@ import "./bootstrap.css";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useStateValue } from "./StateProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "./UserContext";
 
 const countries = [
   "Afghanistan",
@@ -208,6 +209,7 @@ const countries = [
 const ShippingAddress = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
+  const { saveUserData } = useUser();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -229,31 +231,31 @@ const ShippingAddress = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can handle form submission logic
-
-    // Reset form data after submission
-    setFormData({
-      fullName: "",
-      phoneNumber: "",
-      country: "",
-      addressLine1: "",
-      addressLine2: "",
-      city: "",
-      state: "",
-      zipCode: "",
-      agreedTerms: false,
-    });
 
     const updatedFormData = {
       ...formData,
       agreedTerms: true,
     };
 
-    console.log("Form submitted:", updatedFormData);
+      // Save user data to context if needed
+      saveUserData(updatedFormData);
 
-    navigate("/payment", { state: { formData: updatedFormData } });
+      // Reset form data after submission
+      setFormData({
+        fullName: "",
+        phoneNumber: "",
+        country: "",
+        addressLine1: "",
+        addressLine2: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        agreedTerms: false,
+      });
+
+      navigate("/payment");
   };
 
   return (
@@ -267,7 +269,7 @@ const ShippingAddress = () => {
           ></img>
         </Link>
         <h1 className="addressform__link">
-          Checkout {<Link to="/checkout">{basket?.length} items</Link>}
+          Checkout {<Link to="/checkout">{`(${basket?.length} items)`}</Link>}
         </h1>
       </div>
       <Container className="addressForm">
@@ -418,9 +420,7 @@ const ShippingAddress = () => {
             />
           </Form.Group>
 
-          <Button className="addressform__button" type="submit">
-            Use this address
-          </Button>
+          <Button type="submit">Use this address</Button>
         </Form>
       </Container>
     </div>

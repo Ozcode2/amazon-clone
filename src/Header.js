@@ -4,15 +4,20 @@ import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { useUser } from "./UserContext";
 
 function Header() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const { userData, clearUserData } = useUser();
 
   const handleAuthentication = () => {
     if (user) {
       auth.signOut();
+      clearUserData();
     }
   };
+
   return (
     <nav className="header">
       <Link to="/amazon-clone">
@@ -22,9 +27,20 @@ function Header() {
           alt=""
         />
       </Link>
+
+      {userData && (
+        <div className="user__location">
+          <p id="name">{`Deliver to ${userData.fullName}`}</p>
+          <p>
+            <FaMapMarkerAlt color="#d6d6d6" size="18" id="location__marker" />{" "}
+            {userData.city} {userData.zipCode}
+          </p>
+        </div>
+      )}
+
       <div className="header__search">
         <input
-          type="text"
+          type="search"
           placeholder="Search Amazon"
           className="header__searchInput"
         />

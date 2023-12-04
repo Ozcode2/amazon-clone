@@ -11,6 +11,7 @@ import { useStateValue } from "./StateProvider";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./Orders";
+import Header from "./Header";
 
 const promise = loadStripe(
   "pk_test_51OFbvaF6wyEfqsLkFf90knhsjHreUkPKnx1jraH2XnnEqKOsoumRyUPxvi0W4fzJbC0VIfzPFtwjqd6sghOiMl5i00lshS9iHA"
@@ -41,23 +42,51 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/addressselect" element={<ShippingAddress />} />
-          <Route
-            path="/payment"
-            element={
-              <Elements stripe={promise}>
-                <Payment />
-              </Elements>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/amazon-clone" element={<Home />} />
-        </Routes>
-      </div>
+        <div className="app">
+          <Routes>
+            <Route
+              path="/checkout"
+              element={
+                <React.Fragment>
+                  <Header />
+                  <Checkout />
+                </React.Fragment>
+              }
+            />
+            <Route
+              path="/orders"
+              element={
+                <React.Fragment>
+                  <Header />
+                  <Orders />
+                </React.Fragment>
+              }
+            />
+            <Route path="/addressselect" element={<ShippingAddress />} />
+            <Route
+              path="/payment"
+              element={
+                <Elements stripe={promise}>
+                  <React.Fragment>
+                    <Header />
+                    <Payment />
+                  </React.Fragment>
+                </Elements>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route
+              exact
+              path="/amazon-clone"
+              element={
+                <React.Fragment>
+                  <Header />
+                  <Home />
+                </React.Fragment>
+              }
+            />
+          </Routes>
+        </div>
     </Router>
   );
 }

@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./Payment.css";
 import { useStateValue } from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./reducer";
 import axios from "./axios";
 import { db } from "./firebase";
-import Header from "./Header";
+import { useUser } from "./UserContext";
 
 export const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
+  const { userData } = useUser();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -22,11 +23,6 @@ export const Payment = () => {
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
-
-  const location = useLocation();
-  const formData = location.state?.formData || {};
-
-  console.log(formData);
 
   useEffect(() => {
     // generate the special stripe secret which will allow us to charge a customer
@@ -73,13 +69,13 @@ export const Payment = () => {
             basket: basket,
             amount: paymentIntent.amount,
             created: paymentIntent.created,
-            fullName: formData.fullName,
-            phoneNumber: formData.phoneNumber,
-            addressLine1: formData.addressLine1,
-            addressLine2: formData.addressLine2,
-            city: formData.city,
-            state: formData.state,
-            zipCode: formData.zipCode,
+            fullName: userData.fullName,
+            phoneNumber: userData.phoneNumber,
+            addressLine1: userData.addressLine1,
+            addressLine2: userData.addressLine2,
+            city: userData.city,
+            state: userData.state,
+            zipCode: userData.zipCode,
           });
 
         setSucceeded(true);
@@ -102,21 +98,25 @@ export const Payment = () => {
   };
 
   return (
-    <>
-    <Header />
     <div className="payment">
       <div className="payment__container">
-        <h1>Checkout {<Link to="/checkout">{basket?.length} items</Link>}</h1>
+        <h1>
+          Checkout {<Link to="/checkout">{`(${basket?.length} items)`}</Link>}
+        </h1>
         <div className="payment__section">
           <div className="payment__title" id="payment__location">
             <h3>Delivery Address</h3>
           </div>
           <div className="payment__address">
             <p>{user?.email}</p>
-            <p>{formData.addressLine1}</p>
-            <p>
-              {formData.city}, {formData.state}
-            </p>
+            {userData && (
+              <>
+                <p>{userData.addressLine1}</p>
+                <p>
+                  {userData.city}, {userData.state}
+                </p>
+              </>
+            )}
           </div>
         </div>
 
@@ -168,7 +168,6 @@ export const Payment = () => {
         </div>
       </div>
     </div>
-    </>
   );
 };
 

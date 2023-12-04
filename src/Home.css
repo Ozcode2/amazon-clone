@@ -7,13 +7,13 @@
 
 .home__row{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 5px;   
     margin-bottom: 40px;
     background-color: #fff;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: -50px;
+    margin-top: 0px;
     position: relative;
     width: 100%;
     z-index: 1;
@@ -154,5 +154,11 @@
         max-height: 30rem;
         object-fit: contain;
         margin-top: -168px;
+    }
+}
+
+@media(min-width: 280px) and (max-width: 280.9px) {
+    .home__image, .home__imageOne, .home__imageTwo{
+        height: 20rem;
     }
 }

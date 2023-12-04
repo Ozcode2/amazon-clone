@@ -4,7 +4,6 @@ import Product from "./Product";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from "./Header";
 
 const Home = () => {
   const settings = {
@@ -19,8 +18,6 @@ const Home = () => {
   };
 
   return (
-    <>
-    <Header />
     <div className="home">
       <Slider {...settings}>
         <div>
@@ -94,7 +91,6 @@ const Home = () => {
         />
       </div>
     </div>
-    </>
   );
 };
 

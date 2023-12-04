@@ -3,7 +3,6 @@ import "./Orders.css";
 import { useStateValue } from "./StateProvider";
 import { db } from "./firebase";
 import Order from "./Order";
-import Header from "./Header";
 
 function Orders() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -29,8 +28,6 @@ function Orders() {
   }, [user]);
 
   return (
-    <>
-    <Header />
     <div className="orders">
       <h1>Your Orders</h1>
       <div className="orders__order">
@@ -39,7 +36,6 @@ function Orders() {
         ))}
       </div>
     </div>
-    </>
   );
 }
 

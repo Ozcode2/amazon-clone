@@ -1,6 +1,7 @@
 .adressFormContainer > .addressform__header > h1{
     font-size: 25px;
     font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .adressFormContainer > .addressform__header > h1 a{
@@ -97,9 +98,9 @@
         left: 40%;
     }
 }
-@media(min-width: 576px) and (max-width: 800px) {
+@media(min-width: 576px) and (max-width: 700px) {
     .addressform__header{
-        left: 3%;
+        left: 1.5%;
     }
 
     .adressFormContainer >.addressform__header >h1 {
@@ -109,9 +110,45 @@
     }
 }
 
+@media(min-width: 701px) and (max-width: 900px) {
+    .addressform__header{
+        left: 2.5%;
+    }
+
+    .adressFormContainer >.addressform__header >h1 {
+        position: absolute;
+        font-size: 20px;
+        left: 40%;
+    }
+}
+
+@media(min-width: 901px) and (max-width: 1024px) {
+    .addressform__header{
+        left: 3%;
+    }
+
+    .adressFormContainer >.addressform__header >h1 {
+        position: absolute;
+        font-size: 25px;
+        left: 40%;
+    }
+}
+
+@media(min-width: 1024px) and (max-width: 1300px) {
+    .addressform__header{
+        left: 3%;
+    }
+
+    .adressFormContainer >.addressform__header >h1 {
+        position: absolute;
+        font-size: 25px;
+        left: 40%;
+    }
+}
+
 @media(min-width: 175px) and (max-width: 575px) {
     .addressform__header{
-        left: 5%;
+        left: 8%;
     }
 
     .adressFormContainer >.addressform__header >h1 {

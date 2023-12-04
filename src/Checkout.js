@@ -4,14 +4,11 @@ import CheckoutProduct from "./CheckoutProduct";
 import "./Checkout.css";
 import SubTotal from "./SubTotal";
 import FlipMove from "react-flip-move";
-import Header from "./Header";
 
 const Checkout = () => {
   const [{ basket, user }, dispatch] = useStateValue();
 
   return (
-    <>
-    <Header />
     <div className="checkout">
       <div className="checkout__left">
         <img
@@ -44,7 +41,6 @@ const Checkout = () => {
         </div>
       )}
     </div>
-    </>
   );
 };
 

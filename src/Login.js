@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
+// import { useUser } from "./UserContext";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Login = () => {
         // it successfully created a new user with email and password
         console.log(auth);
         if (auth) {
-          navigate("/");
+          navigate("/amazon-clone");
         }
       })
       .catch((error) => alert(error.message));
@@ -47,7 +48,7 @@ const Login = () => {
         <h1>Sign-in</h1>
 
         <form>
-          <h5>E-mail</h5>
+          <h5>Email</h5>
           <input
             type="text"
             value={email}
