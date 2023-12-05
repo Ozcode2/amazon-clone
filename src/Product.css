@@ -75,6 +75,11 @@
     border-color: #b87333 #a5662e #8c5226;
 }
 
+.product > button:focus {
+    outline: none;
+    border-color: none;
+}
+
 @media(max-width: 500px){
     .product > button {
         width: 100px;
