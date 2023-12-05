@@ -263,7 +263,7 @@ const ShippingAddress = () => {
       <div className="addressform__header">
         <Link to="/amazon-clone">
           <img
-            className="header__logo"
+            className="header__image"
             src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
             alt="amazon.."
           ></img>

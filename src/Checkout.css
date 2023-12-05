@@ -21,7 +21,9 @@ div h3 {
     margin-bottom: 10px;
 }
 
-@media(max-width: 740px){
+
+
+@media(min-width: 371px) and (max-width: 740px){
     .checkout{
         flex-wrap: wrap;
     }
@@ -33,5 +35,26 @@ div h3 {
     .checkout__title{
         font-size: 14px;
         font-weight: 600;
+    }
+}
+
+@media(max-width: 370px){
+    .checkout{
+        flex-wrap: wrap;
+        display: block;
+    }
+
+    .checkout > .checkout__left > div > h3{
+        font-size: 12px;
+    }
+
+    .checkout__title{
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .checkout__right{
+        transform: scale(0.7);
+        margin-left: -40px;
     }
 }

@@ -42,7 +42,7 @@
    font-size: 13px;
 }
 
-.header__logo {
+.header__image {
     width: 100px;
     object-fit: contain;
     margin-left: 20px;
@@ -146,9 +146,44 @@
     }
 }
 
-@media(min-width: 175px) and (max-width: 575px) {
+@media(min-width: 451px) and (max-width: 575px) {
     .addressform__header{
-        left: 8%;
+        left: 4%;
+        width: 80%;
+    }
+
+    .adressFormContainer >.addressform__header >h1 {
+        position: absolute;
+        font-size: 17px;
+        left: 40%;
+        font-weight: 700;
+    }
+
+    .header__image {
+        width: 70px;
+        object-fit: contain;
+        margin-left: 0px;
+        margin-right: 0;
+        margin-top: 18px;
+    }
+
+    .adressFormContainer > .addressform__header > h1{
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .addressForm{
+        left: -5%;
+        transform: scale(0.8);
+        top: -60px;
+    }
+}
+
+@media(min-width: 150px) and (max-width: 450px) {
+    .addressform__header{
+        left: 4%;
+        width: 80%;
+        padding-top: 20px;
     }
 
     .adressFormContainer >.addressform__header >h1 {
@@ -157,15 +192,35 @@
         left: 40%;
     }
 
-    .header__logo {
+    .header__image {
         width: 70px;
         object-fit: contain;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 18px;
+        position: relative;
+        left: -15px;
+        top: -5px;
+    }
+
+    .adressFormContainer > .addressform__header > h1{
+        font-size: 13px;
+        font-weight: 700;
     }
 
     .addressForm{
-        left: 4%;
+        left: -4%;
+        transform: scale(0.8);
+        top: -60px;
+    }
+}
+
+@media(max-width: 320px){
+
+    .header__image{
+        transform: scale(0.6);
+        top: -8px;
+    }
+
+    .addressform__header {
+        left: 0%;
+        width: 85%;
     }
 }

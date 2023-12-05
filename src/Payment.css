@@ -97,3 +97,9 @@
     }
 
 }
+
+@media(max-width: 370px){
+    .payment__section{
+        margin: 0;
+    }
+}

@@ -17,7 +17,7 @@ const Checkout = () => {
           alt=""
         />
 
-        <div>
+        <div className="checkout__details">
           <h3>Hello, {user?.email}</h3>
           <h2 className="checkout__title">Your Shopping Basket </h2>
           <FlipMove>
@@ -36,7 +36,7 @@ const Checkout = () => {
         </div>
       </div>
       {basket.length > 0 && (
-        <div className="checkout_right">
+        <div className="checkout__right">
           <SubTotal />
         </div>
       )}
