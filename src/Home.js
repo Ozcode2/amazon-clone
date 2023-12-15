@@ -1,11 +1,10 @@
-import React from "react";
 import "./Home.css";
 import Product from "./Product";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Home = () => {
+const Home = ({ searchQuery }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -16,6 +15,61 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 5000,
   };
+
+  const products = [
+    {
+      id: "12321341",
+      title:
+        "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses",
+      price: 11.96,
+      rating: 5,
+      image: "https://m.media-amazon.com/images/I/81SrwYY-6-L._AC_UY218_.jpg",
+    },
+    {
+      id: "54361741",
+      title:
+        "Aucma Stand Mixer,6.5-QT 660W 6-Speed Tilt-Head Food Mixer, Kitchen Electric Mixer with Dough Hook, Wire Whip & Beater 2 Layer Red Painting (6.5QT, Red)",
+      price: 159.99,
+      rating: 4,
+      image: "https://m.media-amazon.com/images/I/61wzXuHCb1L._AC_UY218_.jpg",
+    },
+    {
+      id: "36365134",
+      title:
+        "SKG Smart Watch, Fitness Tracker with 5ATM Swimming Waterproof, Touch Screen Bluetooth Smartwatch Fitness Watch for Android-iPhone iOS, V7",
+      price: 49.95,
+      rating: 3,
+      image:
+        "https://m.media-amazon.com/images/I/71JU-bUt-sL._AC_UY436_FMwebp_QL65_.jpg",
+    },
+    {
+      id: "46551172",
+      title: "Oppenheimer [DVD]",
+      price: 31.96,
+      rating: 5,
+      image:
+        "https://m.media-amazon.com/images/I/51IIKyH8cAL._SX300_SY300_QL70_FMwebp_.jpg",
+    },
+    {
+      id: "73422674",
+      title: "Apple iPad Mini 4, 128GB, Space Gray - WiFi (Renewed)",
+      price: 199.99,
+      rating: 4,
+      image: "https://m.media-amazon.com/images/I/618hKLi2ljL._AC_UY218_.jpg",
+    },
+    {
+      id: "94382256",
+      title: "Call of Duty: Vanguard",
+      price: 36.11,
+      rating: 4,
+      image:
+        "https://images-na.ssl-images-amazon.com/images/I/71-o7Rap2HL._AC_UL160_SR160,160_.jpg",
+    },
+  ];
+
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="home">
@@ -44,51 +98,24 @@ const Home = () => {
           />
         </div>
       </Slider>
+
       <div className="home__row">
-        <Product
-          id="12321341"
-          title="The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses"
-          price={11.96}
-          rating={5}
-          image="	https://m.media-amazon.com/images/I/81SrwYY-6-L._AC_UY218_.jpg"
-        />
-        <Product
-          id="12321341"
-          title="Aucma Stand Mixer,6.5-QT 660W 6-Speed Tilt-Head Food Mixer, Kitchen Electric Mixer with Dough Hook, Wire Whip & Beater 2 Layer Red Painting (6.5QT, Red)"
-          price={159.99}
-          rating={4}
-          image="https://m.media-amazon.com/images/I/61wzXuHCb1L._AC_UY218_.jpg"
-        />
-
-        <Product
-          id="36365134"
-          title="SKG Smart Watch, Fitness Tracker with 5ATM Swimming Waterproof, Touch Screen Bluetooth Smartwatch Fitness Watch for Android-iPhone iOS, V7"
-          price={49.95}
-          rating={3}
-          image="https://m.media-amazon.com/images/I/71JU-bUt-sL._AC_UY436_FMwebp_QL65_.jpg"
-        />
-        <Product
-          id="46551172"
-          title="Oppenheimer [DVD]"
-          price={31.96}
-          rating={5}
-          image="	https://m.media-amazon.com/images/I/51IIKyH8cAL._SX300_SY300_QL70_FMwebp_.jpg"
-        />
-        <Product
-          id="73422674"
-          title="Apple iPad Mini 4, 128GB, Space Gray - WiFi (Renewed)"
-          price={199.99}
-          rating={4}
-          image="https://m.media-amazon.com/images/I/618hKLi2ljL._AC_UY218_.jpg"
-        />
-
-        <Product
-          id="94382256"
-          title="Call of Duty: Vanguard"
-          price={36.11}
-          rating={4}
-          image="https://images-na.ssl-images-amazon.com/images/I/71-o7Rap2HL._AC_UL160_SR160,160_.jpg"
-        />
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <Product
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              rating={product.rating}
+              image={product.image}
+            />
+          ))
+        ) : (
+          <div className="home__row1">
+            <h2>No products found !</h2>
+          </div>
+        )}
       </div>
     </div>
   );

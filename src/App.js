@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./Checkout";
@@ -19,6 +19,7 @@ const promise = loadStripe(
 
 function App() {
   const [{}, dispatch] = useStateValue();
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -42,51 +43,51 @@ function App() {
 
   return (
     <Router>
-        <div className="app">
-          <Routes>
-            <Route
-              path="/checkout"
-              element={
+      <div className="app">
+        <Routes>
+          <Route
+            path="/checkout"
+            element={
+              <React.Fragment>
+                <Header />
+                <Checkout />
+              </React.Fragment>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <React.Fragment>
+                <Header />
+                <Orders />
+              </React.Fragment>
+            }
+          />
+          <Route path="/addressselect" element={<ShippingAddress />} />
+          <Route
+            path="/payment"
+            element={
+              <Elements stripe={promise}>
                 <React.Fragment>
-                  <Header />
-                  <Checkout />
+                  <Header setSearchQuery={setSearchQuery} />
+                  <Payment />
                 </React.Fragment>
-              }
-            />
-            <Route
-              path="/orders"
-              element={
-                <React.Fragment>
-                  <Header />
-                  <Orders />
-                </React.Fragment>
-              }
-            />
-            <Route path="/addressselect" element={<ShippingAddress />} />
-            <Route
-              path="/payment"
-              element={
-                <Elements stripe={promise}>
-                  <React.Fragment>
-                    <Header />
-                    <Payment />
-                  </React.Fragment>
-                </Elements>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route
-              exact
-              path="/amazon-clone"
-              element={
-                <React.Fragment>
-                  <Header />
-                  <Home />
-                </React.Fragment>
-              }
-            />
-          </Routes>
-        </div>
+              </Elements>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route
+            exact
+            path="/amazon-clone"
+            element={
+              <React.Fragment>
+                <Header setSearchQuery={setSearchQuery} />
+                <Home searchQuery={searchQuery} />
+              </React.Fragment>
+            }
+          />
+        </Routes>
+      </div>
     </Router>
   );
 }

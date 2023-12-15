@@ -1,4 +1,3 @@
-import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
@@ -7,9 +6,14 @@ import { auth } from "./firebase";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useUser } from "./UserContext";
 
-function Header() {
+function Header({ setSearchQuery }) {
   const [{ basket, user }, dispatch] = useStateValue();
   const { userData, clearUserData } = useUser();
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value); // Update search query
+    // You may add logic here to trigger search based on user input
+  };
 
   const handleAuthentication = () => {
     if (user) {
@@ -39,12 +43,13 @@ function Header() {
       )}
 
       <div className="header__search">
-        <input
-          type="search"
-          placeholder="Search Amazon"
-          className="header__searchInput"
-        />
-        <FaSearch className="header__searchIcon" />
+          <input
+            type="search"
+            placeholder="Search Amazon"
+            className="header__searchInput"
+            onChange={handleSearch}
+          />
+          <FaSearch className="header__searchIcon" />
       </div>
 
       <div className="header__nav">

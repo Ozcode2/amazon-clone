@@ -120,6 +120,12 @@
 #location__marker{
     margin-bottom: 9px;
 }
+
+.header__form{
+    display: flex;
+    flex: 1;
+}
+
 /* Media query for smaller screens */
 @media(min-width: 320px) and (max-width: 768px) {
     .header{
