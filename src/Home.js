@@ -100,22 +100,27 @@ const Home = ({ searchQuery }) => {
       </Slider>
 
       <div className="home__row">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <Product
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              price={product.price}
-              rating={product.rating}
-              image={product.image}
-            />
-          ))
-        ) : (
-          <div className="home__row1">
-            <h2>No products found !</h2>
-          </div>
-        )}
+        {filteredProducts.length > 0
+          ? filteredProducts.map((product) => (
+              <Product
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                price={product.price}
+                rating={product.rating}
+                image={product.image}
+              />
+            ))
+          : products.map((product) => (
+              <Product
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                price={product.price}
+                rating={product.rating}
+                image={product.image}
+              />
+            ))}
       </div>
     </div>
   );
