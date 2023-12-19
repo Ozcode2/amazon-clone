@@ -12,6 +12,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./Orders";
 import Header from "./Header";
+import Register from "./Register";
+import RecoverPassword from "./RecoverPassword";
 
 const promise = loadStripe(
   "pk_test_51OFbvaF6wyEfqsLkFf90knhsjHreUkPKnx1jraH2XnnEqKOsoumRyUPxvi0W4fzJbC0VIfzPFtwjqd6sghOiMl5i00lshS9iHA"
@@ -76,6 +78,8 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/recover-password" element={<RecoverPassword />} />
           <Route
             exact
             path="/amazon-clone"

@@ -19,19 +19,8 @@ const Login = () => {
       .catch((error) => alert(error.message));
   };
 
-  const register = (e) => {
-    e.preventDefault();
-
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
-        // it successfully created a new user with email and password
-        console.log(auth);
-        if (auth) {
-          navigate("/amazon-clone");
-        }
-      })
-      .catch((error) => alert(error.message));
+  const toRegisterPage = () => {
+    navigate("/register");
   };
 
   return (
@@ -71,12 +60,22 @@ const Login = () => {
         </form>
 
         <p>
+          <span className="login__forgotPassword">
+            {
+              <Link to="/recover-password" className="login__toRecoverPassword">
+                Forgot your password?
+              </Link>
+            }
+          </span>
+        </p>
+
+        <p>
           By signing-in you agree to AMAZON FAKE CLONE Conditions of Use &
           Sale.Please see our Privacy Notice, our Cookies Notice and our
           Interest-based Ads Notice.
         </p>
 
-        <button className="login__registerButton" onClick={register}>
+        <button className="login__registerButton" onClick={toRegisterPage}>
           Create your Amazon Account
         </button>
       </div>
